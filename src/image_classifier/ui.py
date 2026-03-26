@@ -11,8 +11,8 @@ from src.image_classifier.classifier import ImageNetClassifier
 
 
 st.set_page_config(
-    page_title="Image Classifier",
-    page_icon="IC",
+    page_title="Vision Insight",
+    page_icon="VI",
     layout="wide",
 )
 
@@ -38,12 +38,12 @@ def render_header() -> None:
             padding-bottom: 2.5rem;
         }
         .hero {
-            padding: 2.25rem 2.5rem;
-            border-radius: 28px;
+            padding: 2.5rem 2.7rem;
+            border-radius: 30px;
             background:
-                radial-gradient(circle at 0% 0%, rgba(216, 169, 77, 0.32), transparent 28%),
-                radial-gradient(circle at 100% 0%, rgba(15, 118, 110, 0.25), transparent 30%),
-                linear-gradient(135deg, #fffaf0 0%, #e7ded0 100%);
+                radial-gradient(circle at 0% 0%, rgba(216, 169, 77, 0.34), transparent 28%),
+                radial-gradient(circle at 100% 0%, rgba(15, 118, 110, 0.28), transparent 32%),
+                linear-gradient(135deg, #fffaf0 0%, #e8dfd2 52%, #d9ecdf 100%);
             border: 1px solid rgba(20, 33, 61, 0.08);
             box-shadow: 0 22px 60px rgba(20, 33, 61, 0.08);
             margin-bottom: 1.5rem;
@@ -61,14 +61,27 @@ def render_header() -> None:
         }
         .hero h1 {
             margin: 0;
-            font-size: 3.25rem;
+            font-size: 3.5rem;
             line-height: 0.96;
             letter-spacing: -0.04em;
+            max-width: 12ch;
         }
         .hero p {
             margin-top: 1rem;
-            max-width: 46rem;
-            font-size: 1.08rem;
+            max-width: 42rem;
+            font-size: 1.06rem;
+        }
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.85rem;
+            margin-top: 1.25rem;
+        }
+        .hero-stat {
+            padding: 0.95rem 1rem;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(20, 33, 61, 0.08);
         }
         .feature-grid {
             display: grid;
@@ -96,22 +109,84 @@ def render_header() -> None:
             border: 1px solid rgba(15, 118, 110, 0.16);
             margin-bottom: 1rem;
         }
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.9rem;
+            margin: 0.6rem 0 1.2rem;
+        }
+        .section-card {
+            padding: 1rem 1.1rem;
+            border-radius: 20px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.72));
+            border: 1px solid rgba(20, 33, 61, 0.08);
+            box-shadow: 0 10px 30px rgba(20, 33, 61, 0.05);
+        }
+        .trust-strip {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 0.75rem;
+            margin: 1rem 0 1.4rem;
+        }
+        .trust-item {
+            padding: 0.85rem 0.95rem;
+            border-radius: 16px;
+            background: rgba(20, 33, 61, 0.04);
+            border: 1px solid rgba(20, 33, 61, 0.08);
+            font-size: 0.95rem;
+        }
         </style>
         <section class="hero">
-            <div class="eyebrow">Vision Demo</div>
-            <h1>Image Classifier</h1>
+            <div class="eyebrow">Customer Ready Vision Tool</div>
+            <h1>Understand what is in an image, instantly.</h1>
             <p>
-                Upload a photo, snap one from your camera, and get a clean
-                breakdown of what the model sees. This app uses a pretrained
-                MobileNetV3-Large model trained on ImageNet and turns the output
-                into something easier to read, compare, and share.
+                Vision Insight helps teams quickly identify the most likely
+                objects or scenes inside an image. Upload a file or capture a
+                photo, review ranked predictions, and export results in a format
+                your team can use.
             </p>
+            <div class="hero-stats">
+                <div class="hero-stat"><strong>Fast review</strong><br/>Get ranked predictions in seconds.</div>
+                <div class="hero-stat"><strong>Simple workflow</strong><br/>Upload, review, compare, and export.</div>
+                <div class="hero-stat"><strong>Built for common imagery</strong><br/>Best for products, objects, animals, vehicles, and scenes.</div>
+            </div>
             <div class="feature-grid">
-                <div class="feature-card"><strong>Fast upload flow</strong><br/>Use files or your camera with no extra setup.</div>
-                <div class="feature-card"><strong>Confidence insights</strong><br/>See top matches, certainty level, and probability spread.</div>
-                <div class="feature-card"><strong>Export results</strong><br/>Download prediction data as JSON for later use.</div>
+                <div class="feature-card"><strong>Designed for business users</strong><br/>Clear wording, guided steps, and confidence summaries instead of raw model output.</div>
+                <div class="feature-card"><strong>Decision-friendly results</strong><br/>See top matches, confidence levels, and structured prediction tables for faster review.</div>
+                <div class="feature-card"><strong>Ready to share</strong><br/>Download results as JSON and keep a short on-screen history of recent checks.</div>
             </div>
         </section>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def render_customer_sections() -> None:
+    st.markdown(
+        """
+        <div class="trust-strip">
+            <div class="trust-item"><strong>Easy to use</strong><br/>No technical setup required for end users.</div>
+            <div class="trust-item"><strong>Transparent output</strong><br/>Confidence scores help teams judge certainty.</div>
+            <div class="trust-item"><strong>Flexible input</strong><br/>Works with uploaded files and live camera capture.</div>
+            <div class="trust-item"><strong>Exportable results</strong><br/>Prediction data can be shared or stored.</div>
+        </div>
+        <div class="section-grid">
+            <div class="section-card">
+                <strong>Who this is for</strong><br/>
+                Customer support teams, operations teams, retail demos, internal
+                QA workflows, and anyone who needs a fast first-pass visual check.
+            </div>
+            <div class="section-card">
+                <strong>What it does well</strong><br/>
+                Recognizes broad categories such as everyday objects, food,
+                animals, transport, plants, and outdoor scenes.
+            </div>
+            <div class="section-card">
+                <strong>How to use it</strong><br/>
+                Add an image, review the top predictions, compare confidence,
+                and export the result when you need to share or log it.
+            </div>
+        </div>
         """,
         unsafe_allow_html=True,
     )
@@ -181,13 +256,13 @@ def render_empty_state() -> None:
     st.markdown(
         """
         <div class="callout">
-            <strong>Try it with anything visual.</strong><br/>
-            Pets, food, cars, flowers, gadgets, landscapes, or everyday objects all work well.
+            <strong>Start with a clear image.</strong><br/>
+            Product photos, packaged items, pets, cars, flowers, food, and everyday objects usually give the strongest results.
         </div>
         """,
         unsafe_allow_html=True,
     )
-    st.info("Upload an image or use the camera to run a prediction.")
+    st.info("Upload an image or use the camera to begin analysis.")
 
 
 def render_sidebar() -> tuple[int, bytes | None, str | None]:
@@ -199,9 +274,12 @@ def render_sidebar() -> tuple[int, bytes | None, str | None]:
             "Model: MobileNetV3-Large trained on ImageNet. First run may take a moment."
         )
         st.divider()
-        st.subheader("About")
+        st.subheader("Guidance")
         st.write(
-            "This app is best for broad object recognition. It is not a custom-trained classifier."
+            "This experience is built for broad visual recognition. It is ideal for general image understanding, not custom brand- or company-specific classes."
+        )
+        st.write(
+            "For the best output, use one main subject, good lighting, and a sharp image."
         )
 
         if input_mode == "Upload image":
@@ -245,18 +323,18 @@ def render_history() -> None:
 
 def main() -> None:
     render_header()
+    render_customer_sections()
     top_k, image_bytes, source_label = render_sidebar()
 
     left, right = st.columns([1.15, 1], gap="large")
 
     with left:
-        st.subheader("Analyze any image")
+        st.subheader("Analyze an image")
         st.write(
-            "Upload a file or take a picture, then review the model's top guesses,"
-            " confidence spread, and exported result data."
+            "Upload a file or take a picture to receive ranked predictions, confidence indicators, and downloadable result data."
         )
         st.caption(
-            "Tip: centered subjects and bright lighting usually produce better predictions."
+            "Recommended for customer-facing workflows where teams need a quick, readable first-pass classification."
         )
 
     with right:
@@ -287,8 +365,8 @@ def main() -> None:
     overview_c.metric("Certainty", prediction_tone(top_prediction.confidence))
 
     st.success(
-        f"Best match: {top_prediction.display_label} "
-        f"with {top_prediction.confidence:.2%} confidence."
+        f"Most likely result: {top_prediction.display_label} "
+        f"at {top_prediction.confidence:.2%} confidence."
     )
 
     results_table = render_predictions(predictions)
@@ -318,10 +396,11 @@ def main() -> None:
 
     with st.expander("How this works"):
         st.write(
-            "The app preprocesses your image, runs it through a pretrained "
-            "convolutional neural network, then ranks the most likely ImageNet labels."
+            "The app prepares your image, evaluates it with a pretrained computer-vision model, and returns the most likely ImageNet categories ranked by confidence."
         )
         st.write(
-            "Because this is a general-purpose model, results are strongest for common objects,"
-            " animals, vehicles, plants, and scenes rather than niche custom categories."
+            "Because this is a general-purpose model, results are strongest for common objects, animals, vehicles, plants, food, and scenes rather than niche custom categories."
+        )
+        st.write(
+            "For customer use, treat the output as a fast recommendation layer. If your workflow needs business-specific labels, the next step would be a custom-trained model."
         )
