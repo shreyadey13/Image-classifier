@@ -13,6 +13,10 @@ class Prediction:
     label: str
     confidence: float
 
+    @property
+    def display_label(self) -> str:
+        return self.label.replace("_", " ").title()
+
 
 class ImageNetClassifier:
     def __init__(self) -> None:

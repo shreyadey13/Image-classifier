@@ -5,8 +5,12 @@ A Streamlit app that lets users upload an image and classify what is in it using
 ## Features
 
 - Upload `jpg`, `jpeg`, `png`, or `webp` images
+- Capture images directly from your camera
 - Preview the uploaded image before inference
 - Show the top predicted ImageNet classes with confidence scores
+- Visualize confidence with a chart and summary metrics
+- Download predictions as JSON
+- Review recent prediction history during the session
 - Use a cached pretrained model for faster repeat predictions
 - Deploy easily to Streamlit Community Cloud or with Docker
 
