@@ -56,7 +56,7 @@ def render_header() -> None:
             <h1>Image Classifier</h1>
             <p>
                 Upload a photo and get the model's best guess in seconds.
-                This demo uses a pretrained ResNet-50 model trained on ImageNet.
+                This demo uses a pretrained MobileNetV3-Large model trained on ImageNet.
             </p>
         </section>
         """,
@@ -94,7 +94,7 @@ def main() -> None:
         top_k = st.slider("How many predictions to show", min_value=1, max_value=5, value=3)
 
         st.caption(
-            "Supported model: ResNet-50 pretrained on ImageNet. "
+            "Supported model: MobileNetV3-Large pretrained on ImageNet. "
             "The first run may take a minute while model weights download."
         )
 

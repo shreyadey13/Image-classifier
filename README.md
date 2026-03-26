@@ -1,6 +1,6 @@
 # Image Classifier
 
-A Streamlit app that lets users upload an image and classify what is in it using a pretrained PyTorch `ResNet-50` model.
+A Streamlit app that lets users upload an image and classify what is in it using a pretrained PyTorch `MobileNetV3-Large` model.
 
 ## Features
 

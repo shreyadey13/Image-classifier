@@ -5,7 +5,7 @@ from io import BytesIO
 
 import torch
 from PIL import Image
-from torchvision.models import ResNet50_Weights, resnet50
+from torchvision.models import MobileNet_V3_Large_Weights, mobilenet_v3_large
 
 
 @dataclass(frozen=True)
@@ -16,11 +16,11 @@ class Prediction:
 
 class ImageNetClassifier:
     def __init__(self) -> None:
-        self.weights = ResNet50_Weights.DEFAULT
+        self.weights = MobileNet_V3_Large_Weights.DEFAULT
         self.categories = self.weights.meta["categories"]
         self.transforms = self.weights.transforms()
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        self.model = resnet50(weights=self.weights)
+        self.model = mobilenet_v3_large(weights=self.weights)
         self.model.eval()
         self.model.to(self.device)
 
